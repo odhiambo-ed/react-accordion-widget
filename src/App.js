@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import data from './data'
+import OneQuiz from './Question'
 
-function App() {
+const App = () => {
+  const [questions, setQuestions] = useState(data);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <main>
+      <div className="container">
+        <h5>Sample Questions and Answers</h5>
+        <section className='info'>
+          {questions.map((question) => {
+            return <OneQuiz key={question.id} {...question} />
+          })}
+        </section>
+      </div>
+    </main>
+  )
 }
 
-export default App;
+export default App
